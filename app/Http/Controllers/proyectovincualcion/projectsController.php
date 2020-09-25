@@ -23,7 +23,7 @@ class projectsController extends Controller
   public function show(){
     $char=Project::join('vinculacion.charitable_institutions','projects.charitable_institution_id','=','charitable_institutions.id')
     ->get([
-      'projects.id',
+      'projects.id as project_id',
       'charitable_institutions.name as name_institution',
       'charitable_institutions.ruc',
       //'charitable_institution.location_id as location_institution',
