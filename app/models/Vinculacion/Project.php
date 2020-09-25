@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     //use \OwenIt\Auditing\Auditable;
-    protected $table="vinculacion.projects";
+   // protected $table="vinculacion.projects";
+    protected $connection = 'pgsql-vinculacion';
     //
 }

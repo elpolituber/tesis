@@ -22,19 +22,23 @@ class projectsController extends Controller
 {
   public function show(){
     $char=Project::join('vinculacion.charitable_institutions','projects.charitable_institution_id','=','charitable_institutions.id')
+    ->join('ignug.careers','ignug.careers.id','=','vinculacion.projects.career_id')
+    ->join('ignug.catalogues','ignug.careers.modality_id','=','ignug.catalogues.id')
     ->get([
       'projects.id as project_id',
       'charitable_institutions.name as name_institution',
       'charitable_institutions.ruc',
-      //'charitable_institution.location_id as location_institution',
+      'charitable_institutions.location_id as location_institution',
       'indirect_beneficiaries',
       'legal_representative_name',
       'legal_representative_lastname',
       'legal_representative_identification',
       'project_post_charge',
       'direct_beneficiaries',
-      'career_id',
-      'code as code_project',
+      'careers.id as careers_id',
+      "careers.name as careers_name",
+      "catalogues.name as modality",
+      'projects.code',
       'projects.name as projects_name',
       'field',
       'aim',
@@ -42,7 +46,7 @@ class projectsController extends Controller
       'lead_time',
       'delivery_date',
       'start_date',
-      'description',
+      'projects.description as description_project',
       'coordinator_name',
       'coordinator_lastname',
       'coordinator_postition',
