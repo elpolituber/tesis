@@ -21,7 +21,7 @@ use App\Models\File;
 class projectsController extends Controller
 {
   public function show(){
-    $char=Project::join('charitable_institutions','projects.charitable_institution_id','=','charitable_institutions.id')
+    $char=Project::join('vinculacion.charitable_institutions','projects.charitable_institution_id','=','charitable_institutions.id')
     ->get([
       'projects.id',
       'charitable_institutions.name as name_institution',
@@ -51,7 +51,7 @@ class projectsController extends Controller
       'situational_analysis',
       'foundamentation',
       'justification',
-      'bibliografia',
+      //'bibliografia',
       //'schedules'
       //'location_id,name as licalitation',
       //'fraquency_id.name as fraquency_id_name'

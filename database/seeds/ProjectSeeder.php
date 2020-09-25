@@ -11,7 +11,7 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('locations')->insert([
+        DB::connection('pgsql-ignug')->table('locations')->insert([
             'code'=> '100',
             'name'=> "500",
             'type'=> "200",
@@ -20,7 +20,7 @@ class ProjectSeeder extends Seeder
             'state_id'=>1,
             ]);
 
-        DB::table('charitable_institutions')->insert([    
+        DB::connection('pgsql-vinculacion')->table('charitable_institutions')->insert([    
             'state_id'=>1,
             'ruc'=>'1234567891',
             'name'=>"FUNDACION VISTA PARA TODOS",
@@ -33,7 +33,7 @@ class ProjectSeeder extends Seeder
            // 'direct_beneficiaries'=>"VISTA PARA TODOS",
             ]);
         
-            DB::table('projects')->insert([  
+            DB::connection('pgsql-vinculacion')->table('projects')->insert([  
             'charitable_institution_id'=>1,                 
             'career_id'=>1,
             'assigned_line_id'=>1,//pendiente//lineas de investigacion

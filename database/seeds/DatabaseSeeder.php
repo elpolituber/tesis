@@ -270,7 +270,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // location
-        for ($i = 0; $i < 2; $i++) {
+     /*    for ($i = 0; $i < 2; $i++) {
             factory(IgnugLocation::class)->create([
                 'type' => 'users.country',
             ])->each(function ($location) {
@@ -286,7 +286,7 @@ class DatabaseSeeder extends Seeder
 
         factory(JobBoardCatalogue::class, 100)->create();
         factory(Category::class, 100)->create();
-        factory(JobBoardLocation::class, 100)->create();
+        factory(JobBoardLocation::class, 100)->create(); 
         // roles system
         factory(IgnugCatalogue::class)->create([
             'code' => 'attendance',
@@ -400,8 +400,11 @@ class DatabaseSeeder extends Seeder
                 ]);
                 $user->roles()->attach($role->id);
             });
-        });
-
+        });*/
+        $this->call([
+            CombosSeeder::class,
+            ProjectSeeder::class,
+        ]);
 
         /*
             drop schema if exists authentication cascade;

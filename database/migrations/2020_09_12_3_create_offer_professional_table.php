@@ -15,7 +15,7 @@ class CreateOfferProfessionalTable extends Migration
     {
         Schema::connection('pgsql-job-board')->create('offer_professional', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('professional_id')->constrained();
+            $table->foreignId('professional_id')->constrained('professionals');
             $table->foreignId('offer_id')->constrained();
             $table->foreignId('status_id')->nullable()->constrained('catalogues');
             $table->timestamps();

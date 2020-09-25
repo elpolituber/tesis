@@ -18,7 +18,7 @@ class CreateSpecificAimsTable extends Migration
             $table->foreignId('state_id')->constrained('ignug.states');
             $table->foreignId('project_id')->connstrained('vinculacion.projects');
             $table->text('indicator');
-            $table->json('verifications');
+            $table->json('verifications')->nullable();
             $table->text('description')->nullable();//linea base
             $table->foreignId('type_id')->connstrained('ignug.catalogues');//crear tipo de catologos
             $table->foreignId('parent_code_id')->nullable()->connstrained('specific_aims');//tabla recusiva

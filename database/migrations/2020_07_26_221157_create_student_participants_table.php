@@ -19,7 +19,7 @@ class CreateStudentParticipantsTable extends Migration
             $table->foreignId('student_id')->connstrained('ignug.student');
             $table->foreignId('project_id')->connstrained();
             //$table->string('degree',100); //titulo va en la fk 
-            $table->text('funtion_id')->constrained('catalogues');//fk de catalogues
+            $table->text('funtion_id')->constrained('ignug.catalogues');//fk de catalogues
             $table->timestamps();
         });
     }

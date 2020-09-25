@@ -21,17 +21,17 @@ class CreateProjectsTable extends Migration
             $table->foreignId('assigned_line_id')->constrained('ignug.catalogues');//pendiente//lineas de investigacion
             $table->string('code',100);
             $table->text('name',500);
-            $table->foreignId('status_id')->constrained('catalogues');//catalogo propio una fk 
+            $table->foreignId('status_id')->constrained('ignug.catalogues');//catalogo propio una fk 
             $table->foreignId('state_id')->constrained('ignug.states');
             $table->string('field',100);//campo de area de vinculacion
             $table->string('aim',100);//objeto
-            $table->foreignId('fraquency_id')->constrained('catalogues');//frecuencia de actividades
-            $table->json('cycle');//ciclo
+            $table->foreignId('fraquency_id')->constrained('ignug.catalogues');//frecuencia de actividades
+            $table->json('cycle')->nullable();//ciclo
             $table->foreignId('location_id')->constrained('ignug.locations');//crear tabla de localizacion fk
             $table->integer('lead_time');//plazo de ejecucion
-            $table->date('delivery_date');// tiempo
-            $table->date('start_date');// tiempo
-            $table->date('end_date');//tienmpo
+            $table->date('delivery_date')->nullable();// tiempo
+            $table->date('start_date')->nullable();// tiempo
+            $table->date('end_date')->nullable();//tienmpo
             $table->text('description',1000);//DESCRIPCION GENERAL  DEL PROYECTO.
             $table->string('coordinator_name',300);
             $table->string('coordinator_lastname',300);
@@ -45,7 +45,7 @@ class CreateProjectsTable extends Migration
             $table->string('develope_id',200);//fk un tabla intermedia autoridades(enlazada con user cargo ,fecha de asignacion,fecha teminacion,)
             $table->string('revisado_id',200);//fk un tabla intermedia autoridades(enlazada con user cargo ,fecha de asignacion,fecha teminacion,)
             $table->string('firmadopor_id',200);//fk un tabla intermedia autoridades(enlazada con user cargo ,fecha de asignacion,fecha teminacion,) */
-            $table->json('bibliografia');//pendiente
+            $table->json('bibliografia')->nullable();//pendiente
             //$table->string('schedules')->constrained('ignug.files');//cronograma
 
             $table->timestamps();

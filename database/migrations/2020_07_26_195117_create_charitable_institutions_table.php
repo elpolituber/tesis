@@ -20,12 +20,12 @@ class CreateCharitableInstitutionsTable extends Migration
             $table->string('ruc',15);
             $table->text('name',300);
             $table->foreignId('location_id')->constrained('ignug.locations');//fk propia
-            $table->json('indirect_beneficiaries');
+            $table->json('indirect_beneficiaries')->nullable();
             $table->string('legal_representative_name',100);
             $table->string('legal_representative_lastname',100);
             $table->string('legal_representative_identification',100);
             $table->string('project_post_charge',100);
-            $table->json('direct_beneficiaries');
+            $table->json('direct_beneficiaries')->nullable();
             $table->timestamps();
         });
     }

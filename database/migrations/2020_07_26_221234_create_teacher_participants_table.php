@@ -19,7 +19,7 @@ class CreateTeacherParticipantsTable extends Migration
             $table->foreignId('teacher_id')->connstrained('ignug.users');
             $table->foreignId('project_id')->connstrained('projects');
             $table->integer('workHours');//horas de trabajo
-            $table->string('funtion_id',100)->constrained('catalogues');//rol asignado catalogo 
+            $table->string('funtion_id',100)->constrained('ignug.catalogues');//rol asignado catalogo 
             $table->timestamps();
         });
     }
