@@ -21,7 +21,7 @@ class combosController extends Controller
     //$catalogue=Catalogue::all();
    // $AssignedLine=AssignedLine::all(); //en revision
     $meansOfVerification=Catalogue::where('type','means_verification')->get(["name","id"]);
-    $fraquencyOfActivity=Catalogue::where('type','fraquency_Activity')->get(["name","id"]);
+    $fraquencyOfActivity=Catalogue::where('type','fraquency_activity')->get(["name","id"]);
     $assignedLine=Catalogue::where('type','assigned_line')->get(["name","id"]);
     $linkageAxes=Catalogue::where('type','linkage_axes')->get(["name",'id']);
     $bondingActivities=Catalogue::where('type','bonding_activities')->get(["name","id"]);

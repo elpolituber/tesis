@@ -10,5 +10,10 @@ class Project extends Model
     //use \OwenIt\Auditing\Auditable;
    // protected $table="vinculacion.projects";
     protected $connection = 'pgsql-vinculacion';
+    //utilizacion para el tipo json 
+    protected $casts=[
+        'cycle'=>'array',
+        'bibliografia'=>'array',
+    ];
     //
 }
