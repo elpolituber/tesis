@@ -61,11 +61,140 @@ class ProjectSeeder extends Seeder
             'justification'=>"ADSSDFDSF",
             //'bibliografia'=>"SE PONE LA BIBLIOGRAFIA",
             ]);
-            
-    }
+            //Objetivo general
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Número de estudiantes capacidades en el área de informática ",
+                'verifications'=>json_encode(['Listado de asistencia']),
+                'description'=>'Brindar una capacitación en ofimática básica a niños de 8 a 12 años mediante talleres y trabajos dirigidas para su desarrollo educativo',//linea base
+                'type_id'=>78,//crear tipo de catologos
+                'parent_code_id'=>null,//tabla recusiva               
+            ]);
+            //Objetivo especifico
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Número de máquinas por realizar mantenimiento ",
+                'verifications'=>json_encode(['Informe de estado de maquinas ']),
+                'description'=>' Analizar el estado general  de las maquinas mediante una revisión preliminar para verificar el estado y las condiciones de los equipos informáticos',//linea base
+                'type_id'=>79,//crear tipo de catologos
+                'parent_code_id'=>1,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Número de máquinas formateadas",
+                'verifications'=>json_encode(['Informe de finalización de mantenimiento']),
+                'description'=>'Realizar el mantenimiento del centro de cómputo de CENIT para tener un mejor funcionamiento de los equipos.',//linea base
+                'type_id'=>79,//crear tipo de catologos
+                'parent_code_id'=>1,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Listado de temas a tratar ",
+                'verifications'=>json_encode(['Cronograma de actividades']),
+                'description'=>'Iniciar las capacitación en ofimática básica para el desarrollo estudiantil de los niños que acuden al centro cenit',//linea base
+                'type_id'=>79,//crear tipo de catologos
+                'parent_code_id'=>1,//tabla recusiva               
+            ]);
+            //Resultados
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'Conocer el número de máquinas que tienen inconvenientes para su funcionamiento ',//linea base
+                'type_id'=>80,//crear tipo de catologos
+                'parent_code_id'=>2,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'Realización de mantenimiento preventivo y correctivo a las maquinas del centro',//linea base
+                'type_id'=>80,//crear tipo de catologos
+                'parent_code_id'=>3,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Número de estudiantes aprobados",
+                'verifications'=>json_encode(['Calificaciones']),
+                'description'=>'Estudiantes capacitados',//linea base
+                'type_id'=>80,//crear tipo de catologos
+                'parent_code_id'=>4,//tabla recusiva               
+            ]);
+            //Actividades
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'1.1.1 Reconocimiento del área de trabajo',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>2,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'1.1.2 Revisión preliminar de las maquinas',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>2,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'1.1.3 Entrega de informe de estado de las maquinas',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>2,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'2.1.1 Tareas dirigidas a los niños',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>3,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Documentación técnica",
+                'verifications'=>json_encode(['Informe técnico']),
+                'description'=>'Avance del mantenimiento de las maquinas',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>3,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Número de estudiantes aprobados",
+                'verifications'=>json_encode(['Lista de estudiantes']),
+                'description'=>'3.1.1 Clases básicas de ofimática ',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>4,//tabla recusiva               
+            ]);
+            DB::connection('pgsql-vinculacion')->table('specific_aims')->insert([  
+                'state_id'=>1,
+                'project_id'=>1,
+                'indicator'=>"Número de estudiantes",
+                'verifications'=>json_encode(['Lista de estudiantes']),
+                'description'=>'3.1.1 Número de estudiantes capacitados y aprobados',//linea base
+                'type_id'=>81,//crear tipo de catologos
+                'parent_code_id'=>4,//tabla recusiva               
+            ]);
+
     /* 
     {
-	"ruc": "1234567891",
+		"ruc": "1234567891",
     "name_institution": "FUNDACION VISTA PARA TODOS",
     "location_id": 1,
     "indirect_beneficiaries": ["jesus","pepe","marcos"],
@@ -98,7 +227,13 @@ class ProjectSeeder extends Seeder
     "situational_analysis": "AASDSDDSAAFDSSAF",
     "foundamentation": "SADADASD",
     "justification": "ADSSDFDSF",
-    "bibliografia": ["bibliografia","noce que poner"]
+    "bibliografia": ["bibliografia","noce que poner"],
+    "indicator": ["Número de estudiantes capacidades en el área de informática","horas"],
+    "verifications": [["Listado de asistencia"],["adios"]],
+    "description_aims": ["Brindar una capacitación en ofimática básica a niños de 8 a 12 años mediante talleres y trabajos dirigidas para su desarrollo educativo","describir lo que se hace"],
+    "type_id": [78,"79"],
+    "parent_code_id": [null,"Brindar una capacitación en ofimática básica a niños de 8 a 12 años mediante talleres y trabajos dirigidas para su desarrollo educativo"]
  }       
 */
+    }
 }

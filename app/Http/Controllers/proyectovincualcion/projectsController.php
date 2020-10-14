@@ -14,9 +14,7 @@ use App\Models\Ignug\Catalogue;
 use App\Models\Vinculacion\LinkageAxes;
 use App\Models\Image;
 use App\Models\File;
-
-
-
+use Mockery\Matcher\Type;
 
 class projectsController extends Controller
 {
@@ -130,26 +128,34 @@ class projectsController extends Controller
    $Project->justification=$request->justification;
    $Project->bibliografia=$request->bibliografia;
    $Project->save();
-  //cronograma
-   
+  
    //fk Project searh
-  /*  $fkProject=Project::where('codeAgreement',$request->codeAgreement)->first();
-   $fkaims_types=Catalogue::where('aims_types',$request->aims_types)->firts(); */
+   $fkProject=Project::where('code',$request->code)->first("id");
    //SpecificAim
-   /* $SpecificAim = new SpecificAim; 
-   $SpecificAim->project_id=$fkProject->id;
-   $SpecificAim->name=$request->name;
-   $SpecificAim->indicator=$request->indicator;
-   $SpecificAim->trackingMeans=$request->trackingMeans;
-   $SpecificAim->aims_types=$fkaims_types->id;//('catalogues');
-   $SpecificAim->result=$request->result;
-   $SpecificAim->activities=$request->activities;
-   $SpecificAim-> save(); */
-    return Project::all();
-  }
-  public function creador(){
-    $vista=Project::all();
-    return $vista;
+   $projectcontrol= new projectsController;
+   
+   for($con=0;$con<count($request->type_id);$con++){
+    $fkaims=$request->parent_code_id[$con] <> null ? SpecificAim::where('description',$request->parent_code_id[$con])->first("id") : (object) array("id"=>null);
+    $value=$projectcontrol->aimsCreate($fkProject->id,$request->type_id[$con],$request->descripcion[$con],$request->indicator[$con],$request->verifications[$con],$fkaims->id);  
+   }
+   return $value; 
   }
 
+
+  public function aimsCreate($id_project,$type_id,$description,$indicator,array $verifications,$parent_code_id){
+    $SpecificAim = new SpecificAim;
+    $SpecificAim->state_id=1;
+    $SpecificAim->project_id=$id_project;
+    $SpecificAim->indicator=$indicator;
+    $SpecificAim->verifications=$verifications;
+    $SpecificAim->description=$description;
+    $SpecificAim->type_id=$type_id;
+    $SpecificAim->parent_code_id=$parent_code_id;
+    $SpecificAim->save();
+    return $verifications;
+  }
+  public function creador(Request $request){
+    $vista=SpecificAim::all();
+    return $vista;
+  }
 }

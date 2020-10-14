@@ -18,15 +18,13 @@ class combosController extends Controller
     $career=Career::join('catalogues','careers.modality_id','=','catalogues.id')
     ->get(["careers.name","careers.id","catalogues.name as modality"]);
     $mode=Catalogue::where('type','career_modality')->get(["name","id"]);
-    //$catalogue=Catalogue::all();
-   // $AssignedLine=AssignedLine::all(); //en revision
     $meansOfVerification=Catalogue::where('type','means_verification')->get(["name","id"]);
     $fraquencyOfActivity=Catalogue::where('type','fraquency_activity')->get(["name","id"]);
     $assignedLine=Catalogue::where('type','assigned_line')->get(["name","id"]);
     $linkageAxes=Catalogue::where('type','linkage_axes')->get(["name",'id']);
     $bondingActivities=Catalogue::where('type','bonding_activities')->get(["name","id"]);
-    //
-    $researchAreas=Catalogue::where('type','research_areas')->get(["name","id"]);;
+    $researchAreas=Catalogue::where('type','research_areas')->get(["name","id"]);
+    $aims=Catalogue::where('type','aims')->get(["name","id"]);
     $combos=array(
         //"academiPreriod"=>$academiPreriod,
         "career"=>$career,
@@ -37,6 +35,7 @@ class combosController extends Controller
         "bondingActivities"=>$bondingActivities,
         "fraquencyOfActivity"=>$fraquencyOfActivity,
         "research_areas"=>$researchAreas,
+        "aims"=>$aims,
         //"Catalogue"=>$catalogue,
        
       );

@@ -260,6 +260,34 @@ class CombosSeeder extends Seeder
             'type' => 'research_areas',
             'state_id' => 1,
         ]);
+        //General Aim
+        factory(IgnugCatalogue::class)->create([
+            'code' => '1',
+            'name'=>'objetivo general',
+            'type' => 'aims',
+            'state_id' => 1,
+        ]);
+        //Especifics Aims
+        factory(IgnugCatalogue::class)->create([
+            'code' => '2',
+            'name'=>'objetivo especifico',
+            'type' => 'aims',
+            'state_id' => 1,
+        ]);
+        //Resultado
+        factory(IgnugCatalogue::class)->create([
+            'code' => '3',
+            'name'=>'resultado',
+            'type' => 'aims',
+            'state_id' => 1,
+        ]);
+        //Actividades
+        factory(IgnugCatalogue::class)->create([
+            'code' => '4',
+            'name'=>'Actividades',
+            'type' => 'aims',
+            'state_id' => 1,
+        ]);
         //Career
         $modalidad=IgnugCatalogue::where( "name", "DUAL")->first();
         DB::connection('pgsql-ignug')->table('careers')->insert([

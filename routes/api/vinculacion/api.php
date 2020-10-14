@@ -17,10 +17,9 @@ use Illuminate\Support\Facades\Route;
 // get de projecto de vinculacion
 Route::get('/combo', 'proyectovinculacion\combosController@show');
 Route::get( '/project', 'proyectovinculacion\projectsController@show');
-Route::get( '/creador', 'proyectovinculacion\projectsController@creador');
+Route::post( '/creador', 'proyectovinculacion\projectsController@creador');
 // post proyecto vinculacion
 Route::post('/project', 'proyectovinculacion\projectsController@create');
-
 //delete
 //Route::delete( '/project', 'proyectovinculacion\projectsController@detroys');
 
