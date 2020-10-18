@@ -21,9 +21,9 @@ class combosController extends Controller
     $meansOfVerification=Catalogue::where('type','means_verification')->get(["name","id"]);
     $fraquencyOfActivity=Catalogue::where('type','fraquency_activity')->get(["name","id"]);
     $assignedLine=Catalogue::where('type','assigned_line')->get(["name","id"]);
-    $linkageAxes=Catalogue::where('type','linkage_axes')->get(["name",'id']);
-    $bondingActivities=Catalogue::where('type','bonding_activities')->get(["name","id"]);
-    $researchAreas=Catalogue::where('type','research_areas')->get(["name","id"]);
+    $linkageAxes=Catalogue::where('type','linkage_axes')->get(["name",'id']);//ejes de vinculacion
+    $bondingActivities=Catalogue::where('type','bonding_activities')->get(["name","id"]);//Actividad de vinculación
+    $researchAreas=Catalogue::where('type','research_areas')->get(["name","id"]);//rea de investigacion
     $aims=Catalogue::where('type','aims')->get(["name","id"]);
     $combos=array(
         //"academiPreriod"=>$academiPreriod,

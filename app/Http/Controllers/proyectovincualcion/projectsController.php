@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\proyectovinculacion;
 
 use App\Http\Controllers\Controller;
-use App\Models\Attendance\Catalogue as AttendanceCatalogue;
 use Illuminate\Http\Request;
 use App\Models\Vinculacion\Project;
 use App\Models\Vinculacion\CharitableInstitution;
 use App\Models\Vinculacion\SpecificAim;
-use App\Models\Vinculacion\AcademiPeriod;
-use App\Models\Career;
-use App\Models\Ignug\Catalogue;
-use App\Models\Vinculacion\LinkageAxes;
+use App\Models\Vinculacion\ProjectActivities;
+use App\Models\Vinculacion\StudentParticipant;
+use App\Models\Vinculacion\TeacherParticipant;
+
 use App\Models\Image;
 use App\Models\File;
 use Mockery\Matcher\Type;
@@ -62,7 +61,7 @@ class projectsController extends Controller
       'situational_analysis',
       'foundamentation',
       'justification',
-      //'bibliografia',
+      'bibliografia',
       //'schedules'
      // 'location_id,name as licalitation',
       //'fraquency_id.name as fraquency_id_name'
@@ -134,11 +133,17 @@ class projectsController extends Controller
    //SpecificAim
    $projectcontrol= new projectsController;
    
-   for($con=0;$con<count($request->type_id);$con++){
+   for($con=0;$con<count($request->type_id_specific);$con++){
     $fkaims=$request->parent_code_id[$con] <> null ? SpecificAim::where('description',$request->parent_code_id[$con])->first("id") : (object) array("id"=>null);
-    $value=$projectcontrol->aimsCreate($fkProject->id,$request->type_id[$con],$request->descripcion[$con],$request->indicator[$con],$request->verifications[$con],$fkaims->id);  
+    $projectcontrol->aimsCreate($fkProject->id,$request->type_id_specific[$con],$request->descripcion[$con],$request->indicator[$con],$request->verifications[$con],$fkaims->id);  
    }
-   return $value; 
+  //ProjectActivities
+   for($con=0;$con<count($request->type_id_Activities);$con++){
+    $projectcontrol->projectActivitiesCreate($fkProject->id,$request->type_id_activities[$con],$request->detail_activities[$con]);
+   }
+   //
+
+   return true; 
   }
 
 
@@ -152,10 +157,47 @@ class projectsController extends Controller
     $SpecificAim->type_id=$type_id;
     $SpecificAim->parent_code_id=$parent_code_id;
     $SpecificAim->save();
-    return $verifications;
   }
+  public function projectActivitiesCreate($id_project,$type_id,$detail){
+    $ProjectActivities= new ProjectActivities;
+    $ProjectActivities->state_id=1;
+    $ProjectActivities->project_id=$id_project;
+    $ProjectActivities->type_id=$type_id;
+    $ProjectActivities->$detail;
+    $ProjectActivities->save();
+  }
+
+  public function studentParticipantCreate($id_project,$id_student,$funtionStudent){
+    $Student= new StudentParticipant;
+    $Student->state_id=1;
+    $Student->student_id=$id_student;
+    $Student->project_id=$id_project;
+    $Student->funtion_id=$funtionStudent;
+    $Student->save();
+  }
+  public function teacherParticipantCreate($id_project,$teacher_id,$workHours,$funtionTeacher){
+    $Teacher=new TeacherParticipant;
+    $Teacher->state_id=1;
+    $Teacher->teacher_id=$id_project;
+    $Teacher->project_id=$teacher_id;
+    $Teacher->workHours=$workHours;
+    $Teacher->funtion_id=$funtionTeacher;
+    $Teacher->save();
+  }
+
+  public function destroy(Project $project){
+    DB::table('project_activities')->where('project_id', $project)->delete();
+    DB::table('student_id')->where('project_id', $project)->delete();
+    DB::table('teacher_participants')->where('project_id', $project)->delete();
+    DB::table('specific_aims')->where('project_id', $project)->delete();
+    DB::table('observation')->where('project_id', $project)->delete();
+    DB::table('projects')->where('id', $project)->delete();
+    return true;
+  }
+
   public function creador(Request $request){
-    $vista=SpecificAim::all();
+    $vista=ProjectActivities::all();
     return $vista;
   }
+
 }

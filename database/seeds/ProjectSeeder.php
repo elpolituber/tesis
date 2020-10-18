@@ -191,6 +191,25 @@ class ProjectSeeder extends Seeder
                 'type_id'=>81,//crear tipo de catologos
                 'parent_code_id'=>4,//tabla recusiva               
             ]);
+            DB::connection('pgsql-vinculacion')->table('project_activities')->insert([
+                'state_id'=>1,
+                'project_id'=>1,
+                'type_id'=>57,//un catalogo unico de la tabla
+                'detail'=>null    
+            ]);
+     /*        DB::connection('pgsql-vinculacion')->table('student_participants')->insert([
+                'state_id'=>1,
+                'student_id'=>1,
+                'project_id'=>1,
+                'funtion_id'=>1,
+            ]);
+            DB::connection('pgsql-vinculacion')->table('teacher_participants')->insert([
+                'state_id'=>1,
+                'teacher_id'=>1,
+                'project_id'=>1,
+                'workHours'=>1000,//horas de trabajo
+                'funtion_id'=>1,//rol asignado catalogo
+            ]); */
 
     /* 
     {
@@ -231,9 +250,17 @@ class ProjectSeeder extends Seeder
     "indicator": ["Número de estudiantes capacidades en el área de informática","horas"],
     "verifications": [["Listado de asistencia"],["adios"]],
     "description_aims": ["Brindar una capacitación en ofimática básica a niños de 8 a 12 años mediante talleres y trabajos dirigidas para su desarrollo educativo","describir lo que se hace"],
-    "type_id": [78,"79"],
+    "type_id_specific": [78,"79"],
     "parent_code_id": [null,"Brindar una capacitación en ofimática básica a niños de 8 a 12 años mediante talleres y trabajos dirigidas para su desarrollo educativo"]
- }       
+    "type_id_activities":[1,2],
+    "detail_activities":[null,"hola mundo los destalles en caso de ser otros"],
+    //pendientes por creacion de catalagos
+    "$id_student":[1,2],
+    "$funtion_student":[1,2],
+    "$teacher_id":[1,2],
+    "$workHours":[100,200],
+    "$funtion_teacher":[1,2],
+}       
 */
     }
 }

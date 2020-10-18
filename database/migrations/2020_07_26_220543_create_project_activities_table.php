@@ -19,7 +19,7 @@ class CreateProjectActivitiesTable extends Migration
             $table->foreignId('state_id')->constrained('ignug.states');
             $table->foreignId('project_id')->constrained();
             $table->foreignId('type_id')->constrained('ignug.catalogues');//un catalogo unico de la tabla
-            $table->text('detail',300);
+            $table->text('detail',300)->nullable();
             $table->timestamps();
         });
     }
